@@ -18,9 +18,6 @@ pipeline {
         
         stage('Package') {
             steps {
-                // Empacotar os artefatos gerados
-                sh 'tar -czf react-app.tar.gz build/'
-                
                 // Construir a imagem Docker
                 script {
                     echo "Construindo a imagem Docker"
@@ -41,16 +38,6 @@ pipeline {
                     """
                 }
             }
-        }
-    }
-    post {
-        success {
-            // Arquivar o pacote gerado como artefato
-            archiveArtifacts artifacts: 'react-app.tar.gz', allowEmptyArchive: false
-            echo 'Build and package completed successfully!'
-        }
-        failure {
-            echo 'Build or package failed.'
         }
     }
 }
