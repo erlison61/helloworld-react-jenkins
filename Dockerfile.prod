@@ -1,6 +1,7 @@
 FROM nginx:alpine
 
-COPY /jenkins_home/workspace/project-test/dist /usr/share/nginx/html
+# Copia a pasta dist para o diretório do Nginx
+COPY dist /usr/share/nginx/html
 
+# Expõe a porta 80
 EXPOSE 80
-
